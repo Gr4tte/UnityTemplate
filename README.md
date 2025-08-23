@@ -1,6 +1,6 @@
 ## UnityTemplate
 
-**Template for Unity 6000.0.56f1**
+**Template for Unity 6000.0.56f1**  
 **Style Guide** - https://github.com/Gr4tte/Unity-Style-Guide
 
 ## Included free assets
