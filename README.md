@@ -1,7 +1,7 @@
 ## UnityTemplate
 
 **Template for Unity 6000.0.56f1**  
-**Editor Install** - https://unity.com/releases/editor/whats-new/6000.0.56f1#installs
+**Editor Install** - https://unity.com/releases/editor/whats-new/6000.0.56f1#installs  
 **Style Guide** - https://github.com/Gr4tte/Unity-Style-Guide
 
 ## Included free assets
