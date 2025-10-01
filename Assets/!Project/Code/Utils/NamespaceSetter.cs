@@ -1,11 +1,18 @@
-#if UNITY_EDITOR
 using System.IO;
 using System.Text.RegularExpressions;
-using UnityEditor;
 using UnityEngine;
 
-public class NamespaceSetter : AssetPostprocessor
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+public class NamespaceSetter
+	#if UNITY_EDITOR
+	: AssetPostprocessor 
+#endif
 {
+	public static string Namespace => Regex.Replace(Application.productName, @"[^a-zA-Z0-9_]", "");
+	#if UNITY_EDITOR
 	private static void OnPostprocessAllAssets(string[] importedAssets, string[] _, string[] __, string[] ___)
 	{
 		foreach (string path in importedAssets)
@@ -18,15 +25,12 @@ public class NamespaceSetter : AssetPostprocessor
 			string content = File.ReadAllText(fullPath);
 
 			if (!content.Contains("#NAMESPACE#")) continue;
-			
-			string rawProjectName = Application.productName;
-			string safeNamespace = Regex.Replace(rawProjectName, @"[^a-zA-Z0-9_]", "");
 
-			content = content.Replace("#NAMESPACE#", safeNamespace);
+			content = content.Replace("#NAMESPACE#", Namespace);
 			File.WriteAllText(fullPath, content);
 		}
-		
+
 		AssetDatabase.Refresh();
 	}
+	#endif
 }
-#endif

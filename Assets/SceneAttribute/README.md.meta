@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 00504d4876773c04dbcd0de4f200f106
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316227
+  packageName: Scene Attribute - Reference Scenes in Inspector
+  packageVersion: 1.0
+  assetPath: Assets/SceneAttribute/README.md
+  uploadId: 774693

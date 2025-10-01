@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c071e165847fdd941962afff4902ff07
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 316227
+  packageName: Scene Attribute - Reference Scenes in Inspector
+  packageVersion: 1.0
+  assetPath: Assets/SceneAttribute/SceneAttribute.cs
+  uploadId: 774693

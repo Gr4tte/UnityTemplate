@@ -30,33 +30,40 @@ public class CustomBuild : EditorWindow
 		{
 			BuildGame(incrementPart, labelsSuffix[selectedLabelIndex]);
 		}
+		
+		if (GUILayout.Button("Build Without Increment"))
+		{
+			BuildGame(incrementPart, labelsSuffix[selectedLabelIndex], false);
+		}
 	}
 	
-	private void BuildGame(VersionPart incrementPart, string label)
+	private void BuildGame(VersionPart incrementPart, string label, bool incrementVersion = true)
 	{
-		// 1. Increment version
 		string version = PlayerSettings.bundleVersion.Split('-')[0];
 		string[] parts = version.Split('.');
 		int major = int.Parse(parts[0]);
 		int minor = parts.Length > 1 ? int.Parse(parts[1]) : 0;
 		int patch = parts.Length > 2 ? int.Parse(parts[2]) : 0;
 
-		switch (incrementPart)
+		if (incrementVersion)
 		{
-			case VersionPart.Major:
-				major++;
-				minor = 0;
-				patch = 0;
-				break;
-			case VersionPart.Minor:
-				minor++;
-				patch = 0;
-				break;
-			case VersionPart.Patch:
-				patch++;
-				break;
+			switch (incrementPart)
+			{
+				case VersionPart.Major:
+					major++;
+					minor = 0;
+					patch = 0;
+					break;
+				case VersionPart.Minor:
+					minor++;
+					patch = 0;
+					break;
+				case VersionPart.Patch:
+					patch++;
+					break;
+			}
 		}
-
+		
 		string newVersion = $"{major}.{minor}.{patch}";
 		if (!string.IsNullOrEmpty(label))
 		{
