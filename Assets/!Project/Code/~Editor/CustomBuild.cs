@@ -12,7 +12,7 @@ public class CustomBuild : EditorWindow
 	private string[] labelsSuffix = new string[] { "", "a", "b", "rc" };
 	private int selectedLabelIndex = 0;
 	
-	[MenuItem("Window/Build", priority = 10)]
+	[MenuItem("Tools/Build")]
 	public static void ShowWindow()
 	{
 		GetWindow<CustomBuild>("Build Game");
