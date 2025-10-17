@@ -1,8 +1,15 @@
+
 ## UnityTemplate
 
 **Template for Unity 6000.0.56f1**  
 **Editor Install** - https://unity.com/releases/editor/whats-new/6000.0.56f1#installs  
 **Style Guide (Not up to date)** - https://github.com/Gr4tte/Unity-Style-Guide
+
+## Setup
+- **Optional**
+	- **Script templates:** Download the Script templates from the Style guide. In `Unity Hub` press `Settings` -> `Installs` open `Installs Location` path. Navigate to `6000.0.56f1` -> `Editor` -> `Data` -> `Resources` -> `ScriptTemplates` paste the Script templates in the folder.
+ 	- **Include base scripts in new namepsace:** `Tools` -> `Replace Namespace` input new name. (Make sure to follow the next step and use the exact same name)
+ 	- **Update project name and namespace:** `Edit` -> `Project Settings` -> `Product Name` input new name.
 
 ## Included free assets
   - **Better Hierarchy** - https://assetstore.unity.com/packages/tools/utilities/better-hierarchy-272963
