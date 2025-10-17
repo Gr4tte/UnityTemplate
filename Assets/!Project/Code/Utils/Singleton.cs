@@ -1,32 +1,39 @@
 using UnityEngine;
 
-public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace UnityTemplate
 {
-	public static T Instance { get; private set; }
-	protected virtual void Awake()
+	public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
-		if (Instance != null) Destroy(gameObject);
-		else Instance = this as T;
-	}
-	protected virtual void OnApplicationQuit()
-	{
-		Instance = null;
-		Destroy(gameObject);
-	}
-}
+		public static T Instance { get; private set; }
 
-public abstract class PersistentSingleton<T> : MonoBehaviour where T : MonoBehaviour
-{
-	public static T Instance { get; private set; }
-	protected virtual void Awake()
-	{
-		if (Instance != null) Destroy(gameObject);
-		else Instance = this as T;
-		DontDestroyOnLoad(gameObject);
+		protected virtual void Awake()
+		{
+			if (Instance != null) Destroy(gameObject);
+			else Instance = this as T;
+		}
+
+		protected virtual void OnApplicationQuit()
+		{
+			Instance = null;
+			Destroy(gameObject);
+		}
 	}
-	protected virtual void OnApplicationQuit()
+
+	public abstract class PersistentSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
-		Instance = null;
-		Destroy(gameObject);
+		public static T Instance { get; private set; }
+
+		protected virtual void Awake()
+		{
+			if (Instance != null) Destroy(gameObject);
+			else Instance = this as T;
+			DontDestroyOnLoad(gameObject);
+		}
+
+		protected virtual void OnApplicationQuit()
+		{
+			Instance = null;
+			Destroy(gameObject);
+		}
 	}
 }

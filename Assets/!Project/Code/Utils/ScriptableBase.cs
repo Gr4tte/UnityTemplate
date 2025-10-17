@@ -1,34 +1,38 @@
 using UnityEngine;
 
-public class ScriptableBase : ScriptableObject
+namespace UnityTemplate
 {
-    public int ID => GetInstanceID();
-
-    [field: SerializeField] public string Name { get; private set; }
-
-    public static bool operator ==(ScriptableBase a, ScriptableBase b)
+    public class ScriptableBase : ScriptableObject
     {
-        if (ReferenceEquals(a, b)) return true;
-        if (ReferenceEquals(a, null) || ReferenceEquals(b, null)) return false;
-        return a.ID == b.ID;
-    }
+        public int ID => GetInstanceID();
 
-    public static bool operator !=(ScriptableBase a, ScriptableBase b)
-    {
-        return !(a == b);
-    }
+        [field: SerializeField] public string Name { get; private set; }
 
-    public override bool Equals(object obj)
-    {
-        if (obj is ScriptableBase item)
+        public static bool operator ==(ScriptableBase a, ScriptableBase b)
         {
-            return this == item;
+            if (ReferenceEquals(a, b)) return true;
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null)) return false;
+            return a.ID == b.ID;
         }
-        return false;
-    }
 
-    public override int GetHashCode()
-    {
-        return ID.GetHashCode();
+        public static bool operator !=(ScriptableBase a, ScriptableBase b)
+        {
+            return !(a == b);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is ScriptableBase item)
+            {
+                return this == item;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ID.GetHashCode();
+        }
     }
 }

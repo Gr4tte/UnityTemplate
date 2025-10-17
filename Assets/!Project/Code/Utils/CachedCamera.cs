@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class CachedCamera : MonoBehaviour
+namespace UnityTemplate
 {
-	private static Camera _camera;
-
-	public static Camera Get()
+	public class CachedCamera : MonoBehaviour
 	{
-		if (!_camera)
-		{
-			_camera = Camera.main;
-		}
+		private static Camera _camera;
 
-		return _camera;
+		public static Camera Get()
+		{
+			if (!_camera)
+			{
+				_camera = Camera.main;
+			}
+
+			return _camera;
+		}
 	}
 }

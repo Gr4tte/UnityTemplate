@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace BiscuitTD
+namespace UnityTemplate
 {
     public class BlinkOnAwake : MonoBehaviour
     {
