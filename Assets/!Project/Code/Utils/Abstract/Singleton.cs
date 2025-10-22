@@ -8,7 +8,7 @@ namespace UnityTemplate
 
 		protected virtual void Awake()
 		{
-			if (Instance != null) Destroy(gameObject);
+			if (Instance) Destroy(gameObject);
 			else Instance = this as T;
 		}
 
@@ -25,7 +25,7 @@ namespace UnityTemplate
 
 		protected virtual void Awake()
 		{
-			if (Instance != null) Destroy(gameObject);
+			if (Instance) Destroy(gameObject);
 			else Instance = this as T;
 			DontDestroyOnLoad(gameObject);
 		}

@@ -16,7 +16,7 @@ namespace UnityTemplate
             set
             {
                 PlayerPrefs.SetFloat(MASTER_VOLUME, value);
-                EventBus.Publish(new MasterVolumeChangedEvent(value));
+                EventBus.Publish(new Events.MasterVolumeChanged(value));
             }
         }
 
@@ -26,7 +26,7 @@ namespace UnityTemplate
             set
             {
                 PlayerPrefs.SetFloat(MUSIC_VOLUME, value);
-                EventBus.Publish(new MusicVolumeChangedEvent(value));
+                EventBus.Publish(new Events.MusicVolumeChanged(value));
             }
         }
 
@@ -36,7 +36,7 @@ namespace UnityTemplate
             set
             {
                 PlayerPrefs.SetFloat(SFX_VOLUME, value);
-                EventBus.Publish(new SfxVolumeChangedEvent(value));
+                EventBus.Publish(new Events.SfxVolumeChanged(value));
             }
         }
     }
