@@ -1,22 +1,20 @@
-using UnityEngine;
-
-namespace UnityTemplate
+namespace UnityTemplate.Events
 {
-	public class MasterVolumeChangedEvent : IGameEvent
+	public class MasterVolumeChanged : IGameEvent
 	{
 		public float NewVolume { get; }
-		public MasterVolumeChangedEvent(float newVolume) => NewVolume = newVolume;
+		public MasterVolumeChanged(float newVolume) => NewVolume = newVolume;
 	}
 	
-	public class MusicVolumeChangedEvent : IGameEvent
+	public class MusicVolumeChanged : IGameEvent
 	{
 		public float NewVolume { get; }
-		public MusicVolumeChangedEvent(float newVolume) => NewVolume = newVolume;
+		public MusicVolumeChanged(float newVolume) => NewVolume = newVolume;
 	}
 	
-	public class SfxVolumeChangedEvent : IGameEvent
+	public class SfxVolumeChanged : IGameEvent
 	{
 		public float NewVolume { get; }
-		public SfxVolumeChangedEvent(float newVolume) => NewVolume = newVolume;
+		public SfxVolumeChanged(float newVolume) => NewVolume = newVolume;
 	}
 }

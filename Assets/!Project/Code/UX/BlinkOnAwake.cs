@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -22,6 +23,11 @@ namespace UnityTemplate
             seq.Append(transform.DOScale(originalScale * _scaleIn, _durationIn).SetEase(_easeIn));
             
             seq.Play();
+        }
+
+        private void OnDestroy()
+        {
+            transform.DOKill();
         }
     }
 }

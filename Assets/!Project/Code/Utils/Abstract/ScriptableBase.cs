@@ -6,8 +6,6 @@ namespace UnityTemplate
     {
         public int ID => GetInstanceID();
 
-        [field: SerializeField] public string Name { get; private set; }
-
         public static bool operator ==(ScriptableBase a, ScriptableBase b)
         {
             if (ReferenceEquals(a, b)) return true;

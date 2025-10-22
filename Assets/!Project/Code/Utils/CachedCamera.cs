@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnityTemplate
 {
-	public class CachedCamera : MonoBehaviour
+	public static class CachedCamera
 	{
 		private static Camera _camera;
 

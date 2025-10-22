@@ -7,11 +7,9 @@ using UnityEngine.UI;
 
 namespace UnityTemplate
 {
+    [RequireComponent(typeof(Slider))]
     public class InterpolateSliderColor : MonoBehaviour
     {
-#if ODIN_INSPECTOR
-        [InfoBox("Add OnValueChanged as listener to the slider")]
-#endif
         [SerializeField] private Color _startColor = Color.red;
         [SerializeField] private Color _endColor = Color.green;
 
@@ -21,10 +19,13 @@ namespace UnityTemplate
         private void Awake()
         {
             _slider = GetComponent<Slider>();
-            if (_slider) _fill = _slider.fillRect.GetComponent<Image>();
-
-            if (_slider && !_fill) _fill = GetComponentsInChildren<Image>().First();
-            if (!_fill)
+            _slider.onValueChanged.AddListener(OnValueChanged);
+            
+            if (_slider.fillRect.TryGetComponent(out Image image))
+            {
+                _fill = image;
+            }
+            else
             {
                 enabled = false;
                 return;
@@ -33,11 +34,8 @@ namespace UnityTemplate
             OnValueChanged(_slider.value);
         }
         
-        public void OnValueChanged(float value)
+        private void OnValueChanged(float value)
         {
-            if (!_slider) return;
-            if (!_fill) return;
-            
             float t = (value - _slider.minValue) / (_slider.maxValue - _slider.minValue);
             Color color = Color.Lerp(_startColor, _endColor, t);
             _fill.color = color;

@@ -33,7 +33,7 @@ namespace UnityTemplate
 				_dictionary[entry.Key] = entry.Value;
 			}
 		}
-
+		
 		public TValue Get(TKey key)
 		{
 			if (_dictionary == null)
@@ -42,7 +42,7 @@ namespace UnityTemplate
 			_dictionary.TryGetValue(key, out var value);
 			return value;
 		}
-
+		
 		public bool TryGet(TKey key, out TValue value)
 		{
 			if (_dictionary == null)

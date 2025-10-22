@@ -9,6 +9,7 @@ namespace UnityTemplate
         [SerializeField] private float _expansion = 1.1f;
         [SerializeField] private float _duration = 0.1f;
         [SerializeField] private bool _fixedTime = false;
+        
         private Vector3 _originalScale;
         
         private void Awake()
@@ -16,7 +17,7 @@ namespace UnityTemplate
             _originalScale = transform.localScale;
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             transform.DOKill();
         }
