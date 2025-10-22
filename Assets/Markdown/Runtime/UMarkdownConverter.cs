@@ -4,6 +4,7 @@ using Markdig.Extensions.Tables;
 using Markdig.Renderers.Html;
 using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Highlighter = Highlight.Highlighter;
@@ -21,15 +22,15 @@ namespace BrewedInk.MarkdownSupport
     public static class UMarkdownConverter
     {
 
-        public static string CodeMSpaceValue = 
-#if UNITY_2022_1_OR_NEWER
+        public static string CodeMSpaceValue =
+            #if UNITY_2022_1_OR_NEWER
             ".7em";
-#else 
+        #else
             "24em";
-#endif
+        #endif
 
         public static string StandardLineHeight = $"1.6em";
-        
+
         /// <summary>
         /// Converts a MarkDig MarkdownDocument into a visual element.
         /// </summary>
@@ -41,7 +42,7 @@ namespace BrewedInk.MarkdownSupport
         {
             if (document == null) throw new ArgumentNullException(nameof(document));
             if (context == null) throw new ArgumentNullException(nameof(context));
-            
+
             var root = new MarkdownVisualElement();
             root.AddToClassList("root");
             var isFirst = true;
@@ -54,6 +55,7 @@ namespace BrewedInk.MarkdownSupport
                         element.AddToClassList("first-block");
                         isFirst = false;
                     }
+
                     root.Add(element);
                 }
             }
@@ -62,7 +64,7 @@ namespace BrewedInk.MarkdownSupport
             {
                 root.styleSheets.Add(style);
             }
-            
+
             return root;
         }
 
@@ -140,7 +142,7 @@ namespace BrewedInk.MarkdownSupport
                     element.AddToClassList(clazz);
                 }
             }
-            
+
         }
 
         public static VisualElement Convert(UMarkdownContext context, HeadingBlock block)
@@ -156,6 +158,7 @@ namespace BrewedInk.MarkdownSupport
             {
                 lbl.name = firstLabel.text.Replace(" ", "-").ToLowerInvariant();
             }
+
             return lbl;
         }
 
@@ -163,14 +166,14 @@ namespace BrewedInk.MarkdownSupport
         {
             var root = new VisualElement();
             root.AddToClassList("table-cell");
-            
+
             foreach (var element in cell)
             {
                 if (!TryConvertBlock(context, element, out var subBlock))
                 {
                     continue;
                 }
-                
+
                 root.Add(subBlock);
             }
 
@@ -187,7 +190,7 @@ namespace BrewedInk.MarkdownSupport
             {
                 root.AddToClassList("header");
             }
-            
+
 
             var cellContainer = new VisualElement();
             cellContainer.AddToClassList("row-data");
@@ -198,23 +201,23 @@ namespace BrewedInk.MarkdownSupport
                 {
                     continue;
                 }
+
                 subBlock.AddToClassList("table-col");
                 subBlock.AddToClassList("table-col-" + (columnNumber++));
                 if (row.IsHeader)
                 {
                     subBlock.AddToClassList("header");
                 }
+
                 cells.Add(subBlock);
                 root.Add(subBlock);
             }
 
             foreach (var cell in cells)
             {
-                cell.RegisterCallback<GeometryChangedEvent>(evt =>
-                {
-                    cell.style.width = root.localBound.width / cells.Count;
-                });
+                cell.RegisterCallback<GeometryChangedEvent>(evt => { cell.style.width = root.localBound.width / cells.Count; });
             }
+
             cells[cells.Count - 1].AddToClassList("last-entry");
 
             return root;
@@ -230,6 +233,7 @@ namespace BrewedInk.MarkdownSupport
                 {
                     continue;
                 }
+
                 root.Add(subBlock);
             }
 
@@ -252,19 +256,20 @@ namespace BrewedInk.MarkdownSupport
                 {
                     continue;
                 }
+
                 root.Add(subBlock);
             }
 
             return root;
         }
-        
+
         public static VisualElement Convert(UMarkdownContext context, ListBlock block)
         {
             // new ListE
             var root = new VisualElement();
             foreach (var element in block)
             {
-                
+
                 if (!TryConvertBlock(context, element, out var subBlock))
                 {
                     continue;
@@ -288,9 +293,10 @@ namespace BrewedInk.MarkdownSupport
                 }
 
                 group.Add(subBlock);
-                
+
                 root.Add(group);
             }
+
             return root;
         }
 
@@ -306,10 +312,13 @@ namespace BrewedInk.MarkdownSupport
             var codeString = hl.Highlight(codeLang, code);
 
             codeString = $"<font=\"{context.config.RichTextStyle.codeFontAsset}\"><mspace={CodeMSpaceValue}>{codeString}</mspace></font>";
-            
+
             var lbl = new SelectableLabel(codeString);
             lbl.AddToClassList("code-block-text");
+#pragma warning disable CS0618
             lbl.selection.selectionColor = context.config.RichTextStyle.codeSelectionColor;
+#pragma warning restore CS0618
+
 
             if (context.config.useCodeCopyButtons)
             {
@@ -319,6 +328,7 @@ namespace BrewedInk.MarkdownSupport
 
                 codeElement.Add(copyButton);
             }
+
             codeElement.Add(lbl);
 
             return codeElement;
@@ -353,8 +363,8 @@ namespace BrewedInk.MarkdownSupport
                     {
                         return $"<s>{GetInlineText(context, emphasis.FirstChild, insertLink)}</s>";
                     }
-                    
-                    
+
+
                     if (emphasis.DelimiterCount == 1)
                     {
                         return $"<i>{GetInlineText(context, emphasis.FirstChild, insertLink)}</i>";
@@ -373,15 +383,16 @@ namespace BrewedInk.MarkdownSupport
                     return $"(unknown {inline})";
             }
         }
-        
+
 
         public static VisualElement ConvertLeaf(UMarkdownContext context, LeafBlock block)
         {
             var paragraphElement = new VisualElement();
             paragraphElement.AddToClassList("paragraph");
-            
+
             VisualElement lineElement = null;
             Label lineLabel = null;
+
             void AddLine()
             {
                 lineElement = new VisualElement();
@@ -391,19 +402,20 @@ namespace BrewedInk.MarkdownSupport
                 lineElement.Add(lineLabel);
 
             }
+
             AddLine();
 
             void InsertLink(LinkInline link)
             {
-                var title= GetInlineText(context, link.FirstChild, null);
+                var title = GetInlineText(context, link.FirstChild, null);
 
                 var linkUrl = new MarkdownLinkUri(link.Url, context);
-                        
+
                 if (link.FirstChild is LinkInline subLink)
                 {
                     var img = new LinkImageElement(context, lineElement, title, new MarkdownLinkUri(subLink.Url, context));
                     lineElement.Add(img);
-                            
+
                     img.AddOpenUrlClick(linkUrl);
                     AddLine();
                     return;
@@ -416,11 +428,11 @@ namespace BrewedInk.MarkdownSupport
                     AddLine();
                     return;
                 }
-                        
+
                 var linkElement = new LinkElement(context, lineElement, lineLabel, title, linkUrl, link.Title);
                 lineElement.Add(linkElement);
             }
-            
+
             foreach (var inlineElem in block.Inline)
             {
                 switch (inlineElem)
@@ -434,7 +446,7 @@ namespace BrewedInk.MarkdownSupport
                         {
                             lineLabel.text += " ";
                         }
-                        
+
                         break;
                     case LinkInline link:
                         InsertLink(link);
@@ -445,7 +457,7 @@ namespace BrewedInk.MarkdownSupport
                         break;
                 }
             }
-            
+
             return paragraphElement;
         }
     }
