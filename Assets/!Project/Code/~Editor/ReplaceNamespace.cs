@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 using UnityTemplate;
@@ -5,7 +6,7 @@ using UnityTemplate;
 public class ReplaceNamespace : EditorWindow
 {
 	private string _newNamespace = "";
-	
+
 	[MenuItem("Tools/Replace Namespace")]
 	public static void ShowWindow()
 	{
@@ -15,7 +16,7 @@ public class ReplaceNamespace : EditorWindow
 	private void OnGUI()
 	{
 		_newNamespace = EditorGUILayout.TextField("New Namespace:", _newNamespace);
-		
+
 		if (!GUILayout.Button("Replace")) return;
 		if (string.IsNullOrEmpty(_newNamespace))
 		{
@@ -27,3 +28,4 @@ public class ReplaceNamespace : EditorWindow
 		NamespaceSetter.ReplaceNamespace(_newNamespace);
 	}
 }
+#endif
