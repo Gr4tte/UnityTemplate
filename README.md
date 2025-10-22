@@ -2,7 +2,7 @@
 ## UnityTemplate
 
 **Template for Unity 6000.2.8f1**  
-**Editor Install** - https://unity.com/releases/editor/whats-new/6000.2.8f1#installs
+**Editor Install** - https://unity.com/releases/editor/whats-new/6000.2.8f1#installs  
 **Style Guide (Not up to date)** - https://github.com/Gr4tte/Unity-Style-Guide
 
 ## Setup
