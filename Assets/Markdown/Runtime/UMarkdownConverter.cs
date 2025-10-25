@@ -4,7 +4,6 @@ using Markdig.Extensions.Tables;
 using Markdig.Renderers.Html;
 using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Highlighter = Highlight.Highlighter;

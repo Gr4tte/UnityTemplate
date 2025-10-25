@@ -1,3 +1,4 @@
+#if UnityEditor
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -64,3 +65,4 @@ namespace UnityTemplate
 		}
 	}
 }
+#endif
