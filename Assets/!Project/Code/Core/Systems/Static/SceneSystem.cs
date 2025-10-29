@@ -32,7 +32,7 @@ namespace UnityTemplate
         public static void UnregisterSyncUnloadTask(Func<Task> task) => _syncUnloadTasks.RemoveAll(x => x.Func == task);
         public static void UnregisterAsyncUnloadTask(Func<Task> task) => _asyncUnloadTasks.RemoveAll(x => x.Func == task);
         
-        public static async void LoadCollection(SceneCollection collection, string persistentScene = "")
+        public static async void LoadCollection(SceneCollection collection, string[] additionalScenes = null, string persistentScene = "")
         {
             if (_isTransitioning)
             {
@@ -70,6 +70,11 @@ namespace UnityTemplate
             }
             
             List<string> scenesToLoad = new(collection.Scenes);
+
+            if (additionalScenes != null && additionalScenes.Length > 0)
+            {
+                scenesToLoad.AddRange(additionalScenes);
+            }
             
             sceneCount = SceneManager.sceneCount;
             for (int i = 0; i < sceneCount; i++)
@@ -100,6 +105,7 @@ namespace UnityTemplate
             {
                 Scene scene = SceneManager.GetSceneAt(i);
                 if (collection.Scenes.Contains(scene.path)) continue;
+                if (additionalScenes != null && additionalScenes.Length > 0 && scenesToLoad.Contains(scene.path)) continue;
                 if (scene.path == _persistentScene) continue;
                 
                 unloadOperations.Add(SceneManager.UnloadSceneAsync(scene.path));

@@ -14,7 +14,7 @@ namespace UnityTemplate
         
         private void Start()
         {
-            SceneSystem.LoadCollection(_sceneCollection, _persistentScene);
+            SceneSystem.LoadCollection(_sceneCollection, null, _persistentScene);
         }
     }
 }
