@@ -6,14 +6,17 @@ namespace UnityTemplate
 	{
 		private static Camera _camera;
 
-		public static Camera Get()
+		public static Camera Main
 		{
-			if (!_camera)
+			get
 			{
-				_camera = Camera.main;
-			}
+				if (!_camera)
+				{
+					_camera = Camera.main;
+				}
 
-			return _camera;
+				return _camera;	
+			}
 		}
 	}
 }

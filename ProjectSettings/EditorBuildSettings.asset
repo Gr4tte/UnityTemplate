@@ -11,6 +11,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/!Project/Design/Scenes/Prod/Persistent.unity
     guid: 2972a0a8eae0feb49a0fa87c3059b408
+  - enabled: 1
+    path: Assets/!Demo/Scenes/DemoEnvironment.unity
+    guid: 1d7d559feb6e3d849a64f35ebf6f1e7b
+  - enabled: 1
+    path: Assets/!Demo/Scenes/DemoGameplay.unity
+    guid: 5fb324a607d15c94eb89c9355b7f021b
+  - enabled: 1
+    path: Assets/!Demo/Scenes/DemoUI.unity
+    guid: 966e846f1c532a847922697862c4f586
+  - enabled: 1
+    path: Assets/!Demo/Scenes/DemoMenu.unity
+    guid: 8ac2dcece10e5714fa6847f24c52c213
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

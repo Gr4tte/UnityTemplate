@@ -11,7 +11,9 @@ namespace UnityTemplate
         private const string SFX_VOLUME = "SfxVolume";
         
         [SerializeField] private AudioMixer _mixer;
-
+        [SerializeField] private AudioMixerGroup _musicMixerGroup;
+        [SerializeField] private AudioMixerGroup _sfxMixerGroup;
+        
         private void Start()
         {
             _mixer.SetFloat(MASTER_VOLUME, FloatToDecibel(Settings.MasterVolume));

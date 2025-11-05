@@ -30,6 +30,9 @@ namespace UnityTemplate
 
 			_sourceA = _audioSourceContainer.AddComponent<AudioSource>();
 			_sourceB = _audioSourceContainer.AddComponent<AudioSource>();
+			_sourceA.outputAudioMixerGroup = _musicMixerGroup;
+			_sourceB.outputAudioMixerGroup = _musicMixerGroup;
+			
 			_musicSource = _sourceA;
 			_fadeSource = _sourceB;
 
@@ -38,7 +41,8 @@ namespace UnityTemplate
 			for (int i = 0; i < _poolSize; i++)
 			{
 				AudioSource src = _audioSourceContainer.AddComponent<AudioSource>();
-				src.playOnAwake = false;
+				src.loop = false;
+				src.outputAudioMixerGroup = _sfxMixerGroup;
 				_sourcePool.Add(src);
 			}
 		}
