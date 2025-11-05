@@ -12,9 +12,10 @@ namespace UnityTemplate
             if (!_enemyDatabase.TryGet(type, out GameObject enemyPrefab)) return;
             Instantiate(enemyPrefab, _position, Quaternion.identity);
 
-            GameObject enemyPrefab2 = _enemyDatabase.Get(type);
-            if (!enemyPrefab2) return;
-            Instantiate(enemyPrefab2, _position, Quaternion.identity);
+            // is same as this
+            // GameObject enemyPrefab2 = _enemyDatabase.Get(type);
+            // if (!enemyPrefab2) return;
+            // Instantiate(enemyPrefab2, _position, Quaternion.identity);
         }
     }
 }
