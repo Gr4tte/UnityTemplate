@@ -13,7 +13,7 @@ namespace UnityTemplate
 			public TValue Value;
 		}
 
-		[SerializeField] private Entry[] _entries;
+		[SerializeField] protected Entry[] _entries;
 
 		private Dictionary<TKey, TValue> _dictionary;
 
