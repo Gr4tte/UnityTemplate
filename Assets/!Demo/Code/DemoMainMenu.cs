@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityTemplate;
 
-namespace UnityTemplate
+namespace UnityTemplateDemo
 {
     public class DemoMainMenu : MonoBehaviour
     {

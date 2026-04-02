@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityTemplate;
 
-namespace UnityTemplate
+namespace UnityTemplateDemo
 {
     public class DemoEnemyManager : Singleton<DemoEnemyManager>
     {

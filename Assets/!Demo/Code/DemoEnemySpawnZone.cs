@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityTemplate
+namespace UnityTemplateDemo
 {
     public class DemoEnemySpawnZone : MonoBehaviour
     {

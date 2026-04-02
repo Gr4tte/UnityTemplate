@@ -1,9 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityTemplate.Events;
+using UnityTemplate;
+using Events = UnityTemplate.Events;
 
-namespace UnityTemplate
+namespace UnityTemplateDemo
 {
     public class DemoUI : MonoBehaviour
     {
@@ -47,7 +48,7 @@ namespace UnityTemplate
             SceneSystem.LoadCollection(_wave2Scenes);
         }
         
-        private void OnSceneCollectionLoaded(SceneCollectionLoaded e)
+        private void OnSceneCollectionLoaded(Events.SceneCollectionLoaded e)
         {
             Sequence seq = DOTween.Sequence();
             seq.Append(_round.DOScale(Vector3.zero, 0.3f)

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityTemplate
+namespace UnityTemplateDemo
 {
     public class DemoCharacterController : MonoBehaviour
     {
