@@ -26,6 +26,7 @@ public class ReplaceNamespace : EditorWindow
 		}
 
 		NamespaceSetter.ReplaceNamespace(_newNamespace);
+		PlayerSettings.productName = _newNamespace;
 	}
 }
 #endif

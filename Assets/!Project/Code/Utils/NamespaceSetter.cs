@@ -55,7 +55,10 @@ namespace UnityTemplate
 				return;
 			}
 
+    		newNamespace = Regex.Replace(newNamespace, @"[^a-zA-Z0-9_]", "");
+
 			Debug.Log($"Replacing {Namespace} with {newNamespace} in {matchingFiles.Count} file(s):");
+			
 			foreach (var file in matchingFiles)
 			{
 				string content = File.ReadAllText(file);
@@ -65,7 +68,7 @@ namespace UnityTemplate
 					.Replace($"using {Namespace}", $"using {newNamespace}");
 
 				File.WriteAllText(file, content);
-				Debug.Log($"• {file.Replace(projectPath, "Assets")}");
+				//Debug.Log($"• {file.Replace(projectPath, "Assets")}");
 			}
 		}
 		#endif
