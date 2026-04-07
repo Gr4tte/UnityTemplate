@@ -20,6 +20,8 @@ namespace UnityTemplate
 
 		protected override void Awake()
 		{
+			base.Awake();
+			
 			_audioSourceContainer = new("AudioSourcePool")
 			{
 				transform =
