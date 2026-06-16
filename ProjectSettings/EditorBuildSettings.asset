@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/!Project/Design/Scenes/Prod/Bootstrap.unity
+    path: Assets/!Project/Design/!Scenes/Prod/Bootstrap.unity
     guid: 73563c006ba07e642a5634575c7d063f
   - enabled: 1
-    path: Assets/!Project/Design/Scenes/Prod/Persistent.unity
+    path: Assets/!Project/Design/!Scenes/Prod/Persistent.unity
     guid: 2972a0a8eae0feb49a0fa87c3059b408
   - enabled: 1
     path: Assets/!Demo/Scenes/DemoEnvironment.unity
