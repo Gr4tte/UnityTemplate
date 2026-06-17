@@ -17,7 +17,7 @@ namespace UnityTemplate
 		}
 
 		[MenuItem(playFromFirstMenuStr, false, 150)]
-		static void PlayFromFirstSceneCheckMenu() 
+		static void PlayFromFirstSceneCheckMenu()
 		{
 			playFromFirstScene = !playFromFirstScene;
 			Menu.SetChecked(playFromFirstMenuStr, playFromFirstScene);

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c3a8d7758c4025bfb83e24d458d043, type: 3}
   m_Name: StartingScenes
   m_EditorClassIdentifier: 
-  <Scenes>k__BackingField: []
+  <Scenes>k__BackingField:
+  - Assets/!Project/Design/!Scenes/Prod/Default Scene.unity
