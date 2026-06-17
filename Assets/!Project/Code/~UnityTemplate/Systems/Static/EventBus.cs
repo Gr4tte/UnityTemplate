@@ -53,8 +53,16 @@ namespace UnityTemplate
 
             for (int i = _subscribers[type].Count - 1; i >= 0; i--)
             {
-                var (_, wrapper) = _subscribers[type][i];
-                wrapper(gameEvent);
+                try
+                {
+                    var (_, wrapper) = _subscribers[type][i];
+                    wrapper(gameEvent);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error while publishing event: " + type.FullName);
+                    throw;
+                }
             }
         }
     }
