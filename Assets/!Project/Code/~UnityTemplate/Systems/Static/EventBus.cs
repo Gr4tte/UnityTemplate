@@ -60,7 +60,7 @@ namespace UnityTemplate
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("Error while publishing event: " + type.FullName);
+                    Debug.LogError("Error while publishing event: " + type.FullName + "\r\n" + e.Message);
                     throw;
                 }
             }
