@@ -1,8 +1,7 @@
+#if UNITY_EDITOR
 using System.IO;
 using System.Linq;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 
 namespace UnityTemplate
 {
@@ -61,3 +60,4 @@ namespace {typeof(SceneCollectionCodeGenerator).Namespace}
         }
     }
 }
+#endif

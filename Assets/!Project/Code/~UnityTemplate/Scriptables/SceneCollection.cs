@@ -3,7 +3,9 @@ using Sirenix.OdinInspector;
 #endif
 
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 
 namespace UnityTemplate
