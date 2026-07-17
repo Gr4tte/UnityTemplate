@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a182717e24724d547ba3f3558841fd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _persistentScene: Assets/!Project/Design/!Scenes/Prod/Persistent.unity
+  _persistentScene: Assets/!Project/Design/!Scenes/Prod/Boilerplate/Persistent.unity
   _sceneCollection: {fileID: 11400000, guid: d627c3c3b21d4304a8fedee6a63780b2, type: 2}
 --- !u!4 &376575905
 Transform:

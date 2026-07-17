@@ -30,5 +30,12 @@ namespace UnityTemplate
 			}
 		}
 		#endif
+		
+		public void AddScene(string scenePath)
+		{
+			Scenes ??= new List<string>();
+			if (!Scenes.Contains(scenePath))
+				Scenes.Add(scenePath);
+		}
 	}
 }

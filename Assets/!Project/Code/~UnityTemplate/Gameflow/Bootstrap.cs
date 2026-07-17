@@ -14,7 +14,8 @@ namespace UnityTemplate
         
         private void Start()
         {
-            SceneSystem.LoadCollection(_sceneCollection, null, _persistentScene);
+            if (SceneSystem.IsTransitioning()) return;
+            SceneSystem.LoadCollection(_sceneCollection, persistentScene: _persistentScene);
         }
     }
 }

@@ -31,6 +31,7 @@ namespace UnityTemplate
 
         public static void UnregisterSyncUnloadTask(Func<Task> task) => _syncUnloadTasks.RemoveAll(x => x.Func == task);
         public static void UnregisterAsyncUnloadTask(Func<Task> task) => _asyncUnloadTasks.RemoveAll(x => x.Func == task);
+        public static bool IsTransitioning() => _isTransitioning;
         
         public static async void LoadCollection(SceneCollection collection, string[] additionalScenes = null, string persistentScene = "")
         {
@@ -86,7 +87,21 @@ namespace UnityTemplate
             }
 
             var loadOperations = scenesToLoad.Select(sceneName => SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive)).ToList();
+            foreach (var op in loadOperations)
+            {
+                op.allowSceneActivation = false;
+            }
+            
+            while (loadOperations.Any(x => x.progress < 0.9f))
+            {
+                await Task.Yield();
+            }
 
+            foreach (var op in loadOperations)
+            {
+                op.allowSceneActivation = true;
+            }
+            
             while (loadOperations.Any(x => !x.isDone))
             {
                 await Task.Yield();
