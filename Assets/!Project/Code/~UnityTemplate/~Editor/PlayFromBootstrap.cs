@@ -19,14 +19,14 @@ namespace UnityTemplate
 
 		static bool playFromBootstrapScene
 		{
-			get{return EditorPrefs.HasKey(playFromBootstrapMenuStr) && EditorPrefs.GetBool(playFromBootstrapMenuStr);}
-			set{EditorPrefs.SetBool(playFromBootstrapMenuStr, value);}
+			get => EditorPrefs.HasKey(playFromBootstrapMenuStr) && EditorPrefs.GetBool(playFromBootstrapMenuStr);
+			set => EditorPrefs.SetBool(playFromBootstrapMenuStr, value);
 		}
 		
 		static bool loadPersistentScene
 		{
-			get{return EditorPrefs.HasKey(loadPersistentMenuStr) && EditorPrefs.GetBool(loadPersistentMenuStr);}
-			set{EditorPrefs.SetBool(loadPersistentMenuStr, value);}
+			get => EditorPrefs.HasKey(loadPersistentMenuStr) && EditorPrefs.GetBool(loadPersistentMenuStr);
+			set => EditorPrefs.SetBool(loadPersistentMenuStr, value);
 		}
 
 		[MenuItem(playFromBootstrapMenuStr, false, 150)]
